@@ -3,16 +3,13 @@ import React from "react";
 class Board extends React.Component {
 
   render() {
-    // console.log('this is snake body ', this.props.snake.body);
     const size = this.props.size;
     const snake = this.props.snake.body;
-    const rows = new Array(size).fill(" ");
-    const boardCells = rows.map(row => new Array(size).fill(' ').map(row => {
+    const rows = new Array(size+1).fill(" ");
+    const boardCells = rows.map(row => new Array(size+1).fill(' ').map(row => {
       return {isSnake: false, isHead: false}
     }));
     snake.forEach(part => {
-      // console.log(part);
-      // console.log('boardcells == ', boardCells);
       boardCells[part.y][part.x].isSnake = true;
     });
 
@@ -32,9 +29,7 @@ class Board extends React.Component {
 
   _createRow(rowCells) {
     return rowCells.map(cell => {
-      // console.log(cell);
       if (cell.isSnake) {
-        // console.log("returning is snake cell")
         return <div className="snakeCell"/>
       }
       return <div className="boardCell"></div>

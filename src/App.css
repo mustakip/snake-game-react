@@ -21,14 +21,15 @@
 
 
 .snakeCell {
-  height: 20px;
-  width: 20px;
+  height: 10px;
+  width: 10px;
   background-color: orange;
+  border-radius: 2px;
 }
 
 .boardCell {
-  height: 20px;
-  width: 20px;
+  height: 10px;
+  width: 10px;
   background-color: aliceblue;
 }
 

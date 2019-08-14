@@ -5,7 +5,6 @@ class Position {
   }
 
   changePosition(action) {
-    // console.log("changing position ",action);
     this.x += action.x;
     this.y += action.y;
   }

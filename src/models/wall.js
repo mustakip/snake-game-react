@@ -1,15 +1,21 @@
 const _ = require('lodash');
 
 class Wall {
-  constructor(wallParts) {
-    this.wallParts = wallParts;
+  constructor(size) {
+    this.size = size;
   }
 
-  isSnakeColliding(position) {
-    // console.log(position, this.wallParts)
-    const collidingParts = this.wallParts.filter(part => part.x === position.x && part.y === position.y);
-    // console.log('colliding on ', collidingParts)
-    return collidingParts.length > 0;
+  isSnakeBeyond(position) {
+    return this.isSnakeBeyondVerticalWalls(position) || this.isSnakeBeyondHorizontalWalls(position);
+
+  }
+
+  isSnakeBeyondHorizontalWalls(position) {
+    return position.y < 0 || position.y > this.size;
+  }
+
+  isSnakeBeyondVerticalWalls(position) {
+    return position.x < 0 || position.x >this.size;
   }
 }
 

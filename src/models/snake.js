@@ -12,7 +12,6 @@ class Snake {
 
 
   move() {
-    console.log("moving snake");
     switch (this.velocity.direction.value) {
       case UP.value:
         this.position.changePosition(UP.action);

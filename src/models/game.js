@@ -10,15 +10,12 @@ class Game {
   }
 
   nextStep(intervalId) {
-    let snakeColliding = this.wall.isSnakeColliding(this.snake.position);
+    this.snake.move();
+    const snakeColliding = this.wall.isSnakeBeyond(this.snake.position);
     if (snakeColliding) {
-      // console.log("GameDashboard end");
       clearInterval(intervalId);
       return false;
     }
-    // console.log('game ', this);
-    // console.log('position ', this.snake.position);
-    this.snake.move();
     return true;
   }
 
@@ -26,19 +23,15 @@ class Game {
     let direction;
     switch (key) {
       case 'ArrowRight':
-        console.log("turning right");
         direction = 'RIGHT';
         break;
       case 'ArrowLeft':
-        console.log("turning left");
         direction = 'LEFT';
         break;
       case 'ArrowUp':
-        console.log("turning up");
         direction = 'UP';
         break;
       case 'ArrowDown':
-        console.log("turning down");
         direction = 'DOWN';
         break;
       default:
