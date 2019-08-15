@@ -19,11 +19,25 @@
   flex-direction: row;
 }
 
+.foodCell {
+  height: 10px;
+  width: 10px;
+  background-color: green;
+  border-radius: 2px;
+}
+
 
 .snakeCell {
   height: 10px;
   width: 10px;
   background-color: orange;
+  border-radius: 2px;
+}
+
+.headCell {
+  height: 10px;
+  width: 10px;
+  background-color:orangered;
   border-radius: 2px;
 }
 

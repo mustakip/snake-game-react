@@ -3,10 +3,12 @@
 import directions from "./direction";
 
 class Game {
-  constructor(snake, wall) {
+  constructor(snake, wall, food) {
     this.snake = snake;
     this.wall = wall;
+    this.food = food;
     this.nextStep = this.nextStep.bind(this);
+    this.hasEnded = false;
   }
 
   nextStep(intervalId) {
@@ -15,6 +17,10 @@ class Game {
     if (snakeColliding) {
       clearInterval(intervalId);
       return false;
+    }
+    if (this.food.hasGotEaten(this.snake.position)) {
+      this.snake.grow();
+      // this.food.regenerate();
     }
     return true;
   }

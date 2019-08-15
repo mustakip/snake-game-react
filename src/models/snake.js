@@ -7,11 +7,15 @@ class Snake {
   constructor(initialVelocity, initialPosition) {
     this.velocity = initialVelocity;
     this.position = initialPosition;
-    this.body = [initialPosition];
+    this.body = [];
   }
 
 
   move() {
+    if(this.body.length > 0) {
+      this.body.unshift(this.position.getDuplicate());
+      const a = this.body.pop();
+    }
     switch (this.velocity.direction.value) {
       case UP.value:
         this.position.changePosition(UP.action);
@@ -26,8 +30,12 @@ class Snake {
         this.position.changePosition(RIGHT.action);
         break;
     }
-    this.body.push(this.position);
-    this.body.pop();
+  }
+
+  grow() {
+    const directionToGrowIn = this.velocity.direction.oppositeDirection;
+    const growingPartPosition = this.position.getPosition(directions[directionToGrowIn].action);
+    this.body.push(growingPartPosition);
   }
 
   changeDirection(direction) {
