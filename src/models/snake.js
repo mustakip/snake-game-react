@@ -14,7 +14,7 @@ class Snake {
   move() {
     if(this.body.length > 0) {
       this.body.unshift(this.position.getDuplicate());
-      const a = this.body.pop();
+      this.body.pop();
     }
     switch (this.velocity.direction.value) {
       case UP.value:
@@ -33,7 +33,15 @@ class Snake {
   }
 
   isCollidingToItself() {
-    return this.body.some(position => position.isEqual(this.position));
+    return this.isPartOfBody(this.position);
+  }
+
+  isPartOfBody(position) {
+    return this.body.some(bodyPosition => bodyPosition.isEqual(position));
+  }
+
+  getLength() {
+    return this.body.length;
   }
 
   grow() {

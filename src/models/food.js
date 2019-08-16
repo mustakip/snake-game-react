@@ -6,6 +6,11 @@ class Food {
   hasGotEaten(snakePosition) {
     return this.position.isEqual(snakePosition);
   }
+
+  setPosition(position) {
+    this.position = position;
+  }
+
 }
 
 export default Food;

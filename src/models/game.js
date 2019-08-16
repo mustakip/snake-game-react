@@ -1,6 +1,5 @@
-// import directions from './direction'
-
 import directions from "./direction";
+import Position from "./position";
 
 class Game {
   constructor(snake, wall, food) {
@@ -21,7 +20,7 @@ class Game {
     }
     if (this.food.hasGotEaten(this.snake.position)) {
       this.snake.grow();
-      // this.food.regenerate();
+      this.generateFood();
     }
     return true;
   }
@@ -46,6 +45,24 @@ class Game {
         break;
     }
     this.snake.changeDirection(directions[direction]);
+  }
+
+  generateFood() {
+    const foodPosition = this.getFoodPositionInEmptySpace();
+    this.food.setPosition(foodPosition);
+  }
+
+  getRandomPositionWithinWalls() {
+    const xCo = Math.floor(Math.random() * this.wall.size);
+    const yCo = Math.floor(Math.random() * this.wall.size);
+    return new Position(xCo, yCo);
+  }
+
+  getFoodPositionInEmptySpace() {
+    const positionCandidates = new Array(this.snake.getLength() + 2)
+      .fill(" ")
+      .map(candidate => this.getRandomPositionWithinWalls());
+    return positionCandidates.filter(position => !this.snake.isPartOfBody(position))[0];
   }
 }
 

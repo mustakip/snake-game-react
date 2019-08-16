@@ -3,7 +3,7 @@ import './App.css';
 import GameDashboard from "./components/GameDashboard";
 
 function App() {
-  return <GameDashboard size={50} />
+  return <GameDashboard size={20} />
 }
 
 export default App;
