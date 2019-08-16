@@ -35,7 +35,7 @@ class GameDashboard extends React.Component {
       const moveSuccessful = this.game.nextStep(this.intervalId);
       if (!moveSuccessful) {
         this.game.hasEnded = true;
-        this._createGame();
+        alert("Game Ended");
         return;
       }
       this.setState({game: this.game});

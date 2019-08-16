@@ -13,8 +13,9 @@ class Game {
 
   nextStep(intervalId) {
     this.snake.move();
-    const snakeColliding = this.wall.isSnakeBeyond(this.snake.position);
-    if (snakeColliding) {
+    const snakeCollidingToWalls = this.wall.isSnakeBeyond(this.snake.position);
+    const snakeCollidingToItself = this.snake.isCollidingToItself();
+    if (snakeCollidingToWalls || snakeCollidingToItself) {
       clearInterval(intervalId);
       return false;
     }

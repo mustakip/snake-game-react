@@ -32,6 +32,10 @@ class Snake {
     }
   }
 
+  isCollidingToItself() {
+    return this.body.some(position => position.isEqual(this.position));
+  }
+
   grow() {
     const directionToGrowIn = this.velocity.direction.oppositeDirection;
     const growingPartPosition = this.position.getPosition(directions[directionToGrowIn].action);
