@@ -1,5 +1,3 @@
-const _ = require('lodash');
-
 class Wall {
   constructor(size) {
     this.size = size;

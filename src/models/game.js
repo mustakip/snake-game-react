@@ -6,6 +6,7 @@ class Game {
     this.snake = snake;
     this.wall = wall;
     this.food = food;
+    this.score = 0;
     this.nextStep = this.nextStep.bind(this);
     this.hasEnded = false;
   }
@@ -19,6 +20,7 @@ class Game {
       return false;
     }
     if (this.food.hasGotEaten(this.snake.position)) {
+      this.score += 1;
       this.snake.grow();
       this.generateFood();
     }

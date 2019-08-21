@@ -39,7 +39,7 @@ class GameDashboard extends React.Component {
         return;
       }
       this.setState({game: this.game});
-    }, 200)
+    }, 300)
   }
 
   _handleClick(event) {
@@ -55,6 +55,7 @@ class GameDashboard extends React.Component {
       this._createGame();
     }
     return <div className="game" onKeyDown={this._handleClick}>
+      <div className="game-score">{this.game.score}</div>
       <Board size={this.props.size} snake={this.state.game.snake} food={this.state.game.food}/>
       <button onClick={this._startGame}>Start</button>
       <button onClick={this._stopGame}>Stop</button>

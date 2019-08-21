@@ -1,5 +1,5 @@
 class Velocity {
-  constructor(direction, speed) {
+  constructor(direction) {
     this.direction = direction;
   }
 
